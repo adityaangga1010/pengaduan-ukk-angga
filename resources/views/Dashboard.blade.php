@@ -4,6 +4,7 @@
 
 @section ('content')
     <section class=" ml-[296px] mr-11 mt-[116px] mx-auto font-jakartasans">
+        {!! Toastr::message() !!}
         <div class=" w-full rounded-xl h-full">
             <div class=" flex flex-col gap-8">
                 <div class=" flex flex-col gap-1">

@@ -6,6 +6,7 @@ use Throwable;
 use App\Models\Pengaduan;
 use App\Models\Masyarakat;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -22,15 +23,18 @@ class AuthController extends Controller
             'nama' => 'required',
             'username' => 'required|unique:masyarakats,username',
             'jenis_kelamin' => 'required',
+            'alamat' => 'required',
             'password' => 'required',
             'telp' => 'required|unique:masyarakats,telp',
         ]);
         try {
             $validator['password'] = Hash::make($request->password);
             Masyarakat::create($validator);
-            return redirect()->route('route.login')->with('success', 'Registrasi Berhasil');
+            Toastr::success('Data Berhasil di tambah', 'OK', ["positionClass" => "toast-top-right"]);
+            return redirect()->route('route.login');
         } catch (Throwable $th) {
-            return back()->with('error', 'Sepertinya ada yang salah');
+            Toastr::info('Sepertinya nama pengguna sudah ada', 'Maaf', ["positionClass" => "toast-top-right"]);
+            return redirect()->back();
         }
     }
 
@@ -46,15 +50,15 @@ class AuthController extends Controller
         ]);
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            Toastr::success('Anda Berhasil Login', 'Selamat', ["positionClass" => "toast-top-right"]);
             return redirect()->route('masyarakat.dashboard');
         }elseif (Auth::guard('petugas')->attempt($credentials)){
             $request->session()->regenerate();
+            Toastr::success('Anda Berhasil Login', 'Selamat', ["positionClass" => "toast-top-right"]);
             return redirect()->route('masyarakat.dashboard');
         }
-
-        return back()->withErrors([
-            'username' => 'Autentikasi gagal.',
-        ])->onlyInput('username');
+        Toastr::error('Sepertinya Username & Password anda salah', 'Maaf', ["positionClass" => "toast-top-right"]);
+        return redirect()->back();
     }
 
     public function logout(){
@@ -63,11 +67,15 @@ class AuthController extends Controller
         }elseif(Auth::guard('petugas')->check()){
             Auth::guard('petugas')->logout();
         }
+        Toastr::info('Anda Berhasil Keluar ', 'OK', ["positionClass" => "toast-top-right"]);
         return redirect()->route('routeLP.landing');
     }
     // landingpage
     public function landingpage(){
+        $PengaduanPending = Pengaduan::where('status', '0')->with('getDataMasyarakat')->get();
+        $PengaduanProses = Pengaduan::where('status', 'Proses')->with('getDataMasyarakat', 'getDataTanggapan')->get();
+        $PengaduanSelesai = Pengaduan::where('status', 'Selesai')->with('getDataMasyarakat')->get();
         $totalAduan = Pengaduan::count();
-        return view('LandingPage', compact('totalAduan'));
+        return view('LandingPage', compact('totalAduan', 'PengaduanPending', 'PengaduanProses', 'PengaduanSelesai'));
     }
 }

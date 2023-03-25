@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('username',25)->unique();
             $table->string('password');
             $table->enum('jenis_kelamin',['perempuan', 'laki-laki']);
+            $table->text('alamat');
             $table->string('telp',13)->unique();
             $table->timestamps();
         });

@@ -65,6 +65,14 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class=" flex items-center gap-5 mb-5">
+                                <div class="w-full">
+                                    <label for="alamat"
+                                        class=" text-sm text-ketiga duration-300 ease-in-out">Alamat</label>
+                                    <textarea id="alamat" name="alamat" type="text" placeholder="Isi Alamat lengkap"
+                                        class=" text-utama text-sm w-full placeholder:text-sm placeholder:text-ketiga focus:placeholder:text-kedua focus:outline-none mt-2 border border-kedua rounded-md p-3" required></textarea>
+                                </div>
+                            </div>
                             <button class=" hover:bg-opacity-80 duration-300 ease-in-out bg-utama w-full text-putih py-3 mb-4 rounded-md">Register</button>
                             <div class=" flex justify-center">
                                 <h1 class=" text-sm">Sudah memiliki akun? <a href="{{ route('route.login') }}"

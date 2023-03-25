@@ -18,6 +18,7 @@ class Masyarakat extends Authenticatable
         'password',
         'telp',
         'jenis_kelamin',
+        'alamat',
     ];
 
     public function pengaduan(){

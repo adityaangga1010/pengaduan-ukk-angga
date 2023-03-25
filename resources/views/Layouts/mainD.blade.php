@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{asset('img/tes.svg')}}">
     <title>@yield('title')</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
     @vite('resources/css/app.css')
 
 </head>
@@ -102,7 +105,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-kedua group-hover:text-utama duration-300 ease-in">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
                                 </svg>
-                                <a class=" group-hover:text-utama duration-300 text-sm text-kedua" href="{{route('logout')}}">Logout</a>
+                                <a class=" group-hover:text-utama duration-300 text-sm text-kedua" href="{{route('logout')}}">Keluar</a>
                             </div>
                         </div>
                     </div>

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Pengaduan;
 use App\Models\Tanggapan;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
 
 class PengaduanController extends Controller
@@ -32,6 +33,7 @@ class PengaduanController extends Controller
             'image' => $profileImage,
         ]);
         if($create){
+            Toastr::success('Anda Berhasil tambah pengaduan', 'Hore!!!', ["positionClass" => "toast-top-right"]);
             return redirect()->route('routePN.index')->with('succes');
         }
     }
@@ -39,6 +41,7 @@ class PengaduanController extends Controller
         $pengaduans = Pengaduan::find($id_pengaduan);
         $pengaduans->delete();
 
+        Toastr::warning('Data berhasil di hapus', 'OK', ["positionClass" => "toast-top-right"]);
         return redirect()->route('routePN.index')->with('success');
     }
     public function show($id_pengaduan){

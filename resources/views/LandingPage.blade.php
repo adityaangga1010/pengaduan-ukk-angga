@@ -4,6 +4,7 @@
 
 @section('content')
     <div class=" min-h-screen ">
+        {!! Toastr::message() !!}
         <nav class=" mx-auto">
             <div class=" px-14 py-3 bg-utama">
                 <div class=" flex justify-between">
@@ -72,23 +73,97 @@
                     </div>
                 </div>
             </div>
-
-            <div class=" bg-kelima mt-24 px-14 py-6">
-                <h1 class=" text-center font-bold text-lg">Aspirasi & Pengaduan</h1>
-                <div class=" mt-10 grid grid-cols-2">
-                    <div class=" bg-ketiga rounded-lg py-3 px-6">
-                        <div class=" text-putih flex gap-4 items-center">
-                            <h1>dari</h1>
-                            <h1>dari</h1>
-                            <h1>dari</h1>
-                            <h1>dari</h1>
-                            <h1>dari</h1>
+            <div class=" px-14 mt-24 bg-kelima rounded-lg pt-5 py-20">
+                <div class=" flex flex-col mb-10">
+                    <span class=" tracking-[2px] text-center class font-medium text-ketiga">PENGADUAN</span>
+                </div>
+                <div class=" grid grid-cols-3 gap-10">
+                    <div class=" flex flex-col ">
+                        <div class=" border border-kedua rounded-lg gap-5 flex flex-col w-full h-full">
+                            <div class=" pl-9 flex gap-2 py-3 bg-merah rounded-t-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-putih">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <h1 class=" text-putih">Pengaduan Belum Ditanggapi</h1>
+                            </div>
+                            @foreach ($PengaduanPending as $item)
+                            <div class=" flex flex-col gap-4 px-9 w-full mb-4">
+                                <div class=" border rounded-lg border-kedua">
+                                    <div class=" w-full h-full border-b-kedua">
+                                        <img class=" border-b border-kedua w-full h-36" src="{{asset('img/'.$item->image)}}" alt="">
+                                        <div class=" flex flex-col gap-2 px-2 py-2">
+                                            <div class=" flex justify-center">
+                                                <span class=" bg-merah px-3 py-1 rounded-full text-xs text-putih">Pending</span>
+                                            </div>
+                                            <h1>Nama Pengaduan : {{$item->getDataMasyarakat->nama}}</h1>
+                                            <h1 class=" text-kedua">Isi Laporan : {{$item->isi_laporan}}</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class=" flex flex-col ">
+                        <div class=" border border-kedua rounded-lg gap-5 flex flex-col w-full h-full">
+                            <div class=" pl-9 flex gap-2 py-3 bg-kuning rounded-t-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-putih">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3" />
+                                </svg>
+                                <h1 class=" text-putih">Pengaduan Diproses</h1>
+                            </div>
+                            @foreach ($PengaduanProses as $item)
+                            <div class=" flex flex-col gap-4 px-9 w-full mb-4">
+                                <div class=" border rounded-lg border-kedua">
+                                    <div class=" w-full h-full border-b-kedua">
+                                        <img class=" border-b border-kedua w-full h-36" src="{{asset('img/'.$item->image)}}" alt="">
+                                        <div class=" flex flex-col gap-2 px-2 py-2">
+                                            <div class=" flex justify-center">
+                                                <span class=" bg-merah px-3 py-1 rounded-full text-xs text-putih">Proses</span>
+                                            </div>
+                                            <h1>Nama Pengaduan : {{$item->getDataMasyarakat->nama}}</h1>
+                                            <h1 class=" text-kedua">Tanggal Pengaduan : {{$item->tgl_pengaduan}}</h1>
+                                            <h1 class=" text-kedua">Tanggal Proses : {{$item->getDataTanggapan->tgl_tanggapan}}</h1>
+                                            <h1 class=" text-kedua">Isi Laporan : {{$item->isi_laporan}}</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class=" flex flex-col ">
+                        <div class=" border border-kedua rounded-lg gap-5 flex flex-col w-full h-full">
+                            <div class=" pl-9 flex gap-2 py-3 bg-keempat rounded-t-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-putih">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <h1 class=" text-putih">Pengaduan Selesai</h1>
+                            </div>
+                            @foreach ($PengaduanSelesai as $item)
+                            <div class=" flex flex-col gap-4 px-9 w-full mb-4">
+                                <div class=" border rounded-lg border-kedua">
+                                    <div class=" w-full h-full border-b-kedua">
+                                        <img class=" border-b border-kedua w-full h-36" src="{{asset('img/'.$item->image)}}" alt="">
+                                        <div class=" flex flex-col gap-2 px-2 py-2">
+                                            <div class=" flex justify-center">
+                                                <span class=" bg-keempat px-3 py-1 rounded-full text-xs text-putih">Selesai</span>
+                                            </div>
+                                            <h1>Nama Pengaduan : {{$item->getDataMasyarakat->nama}}</h1>
+                                            <h1 class=" text-kedua">Tanggal Pengaduan : {{$item->tgl_pengaduan}}</h1>
+                                            <h1 class=" text-kedua">Tanggal Selesai : {{$item->getDataTanggapan->tgl_tanggapan}}</h1>
+                                            <h1 class=" text-kedua">Isi Laporan : {{$item->isi_laporan}}</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </main>
-        <footer class=" bg-biru mt-24 flex justify-center items-center py-9">
+        <footer class=" bg-biru flex justify-center items-center py-9">
             <h1 class=" text-putih">&copy; Copyright 2023 Pengaduan-Baranang-Siang-Bogor Allright Reserved.</h1>
         </footer>
     </div>

@@ -14,6 +14,7 @@
                 </div>
             </div>
         </nav>
+        {!! Toastr::message() !!}
         <div class=" min-h-screen flex justify-center font-jakartasans">
             <div class=" flex items-center">
                 <div class=" drop-shadow-3xl bg-putih rounded-xl w-[500px] p-10 flex flex-col items-center">

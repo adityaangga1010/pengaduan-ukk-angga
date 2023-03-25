@@ -4,6 +4,7 @@
 
 @section('content')
 <section class=" ml-[296px] mr-11 mt-[116px] mx-auto font-jakartasans">
+    {!! Toastr::message() !!}
     <div class=" bg-putih w-full rounded-xl h-full pt-6 pb-16 px-6">
         <div class=" flex justify-end">
             @if (Auth::guard('masyarakat')->user())
