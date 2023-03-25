@@ -62,5 +62,4 @@ Route::middleware('IsLogin')->group(function () {
     Route::get('/tanggapan/{id_pengaduan}', [TanggapanController::class, 'destroy'])->name('routeT.destroy');
     Route::put('/tanggapan/{id_pengaduan}', [TanggapanController::class, 'store'])->name('routeT.store');
     Route::get('/petugas/generate_pdf', [TanggapanController::class, 'generatePDF'])->name('generate.pdf');
-
 });

@@ -6,6 +6,7 @@ use App\Models\Pengaduan;
 use App\Models\Tanggapan;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
 
 class TanggapanController extends Controller
@@ -39,6 +40,7 @@ class TanggapanController extends Controller
                     'id_petugas' => Auth::guard('petugas')->user()->id,
                 ]);
             }
+            Toastr::success('Anda Berhasil Menanggapi Keluhan', 'Ok', ["positionClass" => "toast-top-right"]);
             return redirect()->route('routePN.index')->with('success');
         }
         return back()->with('error');

@@ -29,7 +29,7 @@
             <div class=" flex justify-between">
                 <div class=" max-w-[550px] pl-14 flex flex-col gap-4">
                     <h1 class=" text-4xl font-bold tracking-wide leading-normal">Selamat Datang Di Aplikasi Pengaduan Masyarakat <span class=" text-utama">Baranang Siang</span></h1>
-                    <span class=" text-kedua">Ayo berikan keluhan kalian, Agar bisa cepat di tanggani oleh petugas kami , Pesan kami Jangan lupa untuk selalu jujur dalam menjalankan apapun, enjoy!!!!!</span>
+                    <span class="">Ayo berikan keluhan kalian, Agar bisa cepat di tanggani oleh petugas kami , Pesan kami Jangan lupa untuk selalu jujur dalam menjalankan apapun, enjoy!!!!!</span>
                     <div class=" pt-4">
                         <span class=" bg-utama text-putih px-6 py-3 text-sm rounded-full">Total Pengaduan : {{$totalAduan}}</span>
                     </div>
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class=" px-14 mt-24 bg-kelima rounded-lg pt-5 py-20">
-                <div class=" flex flex-col mb-10">
+                <div class=" flex flex-col mb-4">
                     <span class=" tracking-[2px] text-center class font-medium text-ketiga">PENGADUAN</span>
                 </div>
                 <div class=" grid grid-cols-3 gap-10">
@@ -119,7 +119,7 @@
                                         <img class=" border-b border-kedua w-full h-36" src="{{asset('img/'.$item->image)}}" alt="">
                                         <div class=" flex flex-col gap-2 px-2 py-2">
                                             <div class=" flex justify-center">
-                                                <span class=" bg-merah px-3 py-1 rounded-full text-xs text-putih">Proses</span>
+                                                <span class=" bg-kuning px-3 py-1 rounded-full text-xs text-putih">Proses</span>
                                             </div>
                                             <h1>Nama Pengaduan : {{$item->getDataMasyarakat->nama}}</h1>
                                             <h1 class=" text-kedua">Tanggal Pengaduan : {{$item->tgl_pengaduan}}</h1>

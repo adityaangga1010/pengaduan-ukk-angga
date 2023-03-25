@@ -77,7 +77,7 @@
                             @endif
                         </textarea>
                     </div>
-                    <button class=" bg-merah p-2 rounded-md text-putih">Submit</button>
+                    <button class=" bg-merah p-2 rounded-md text-putih">Simpan</button>
                 </form>
             </div>  
         </div>

@@ -22,6 +22,7 @@
                         <td class=" w-[17%] translate-x-12">Id Pengaduan</td>
                         <td class=" w-[17%] translate-x-24">Nama Petugas</td>
                         <td class=" w-[17%] translate-x-32">Tanggapan</td>
+                        <td class=" w-[17%] translate-x-32">Status</td>
                         <td class=" w-[17%] text-end">Action</td>
                     </tr>
                 </thead>
@@ -33,6 +34,15 @@
                             <td class=" w-[17%] translate-x-12">{{$item->id_pengaduan}}</td>
                             <td class=" w-[17%] translate-x-24">{{$item->getDataPetugas->nama_petugas}}</td>
                             <td class=" w-[17%] translate-x-32">{{$item->tanggapan}}</td>
+                            <td class=" w-[17%] translate-x-32">
+                                @if ($item->getDataPengaduan->status == '0')
+                                    <a class=" font-bold italic text-merah">Pending</a>
+                                @elseif($item->getDataPengaduan->status == 'proses')
+                                    <a class=" font-bold italic text-biru">Proses</a>
+                                @else
+                                    <a class=" font-bold italic text-keempat">Selesai</a>
+                                @endif
+                            </td>
                             <td class=" w-[17%] justify-end flex">
                                 <div class=" cursor-pointer bg-kelima py-2 rounded-lg px-2 group/2 relative" >
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-ketiga duration-300 ease-in-out group-hover/2:text-utama">

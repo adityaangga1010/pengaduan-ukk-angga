@@ -13,7 +13,10 @@
                     <span style=" font-size: 16px">Nama petugas: <span style="color: #3d5a80">{{ Auth::guard('petugas')->user()->nama_petugas }}</span></span>
                 </div>
                 <div class=" flex items-center">
-                    <span style="font-size: 16px">Tanggal: <span style="color: #3d5a80">{{ now()->format('D, d M Y ') }}</span></span>
+                    <span style="font-size: 16px">Tanggal: <span style="color: #3d5a80">{{ now()->format('l, d / M / y  ') }}</span></span>
+                </div>
+                <div class=" flex items-center">
+                    <span style="font-size: 16px">Waktu: <span style="color: #3d5a80">{{ now()->format('H:i:s a ') }}</span></span>
                 </div>
             </div>
             <div class="mt-3">
@@ -25,6 +28,7 @@
                             <td>Nik Pelapor</td>
                             <td>Isi Aduan</td>
                             <td>Isi Tanggapan</td>
+                            <td>Status</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,6 +39,7 @@
                                 <td>{{$item->getDataPengaduan->nik}}</td>
                                 <td>{{$item->getDataPengaduan->isi_laporan}}</td>
                                 <td>{{$item->tanggapan}}</td>
+                                <td>{{$item->getDataPengaduan->status}}</td>
                             </tr>
                         @endforeach
                     </tbody>
