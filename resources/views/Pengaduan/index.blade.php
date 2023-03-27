@@ -8,7 +8,7 @@
     <div class=" bg-putih w-full rounded-xl h-full pt-6 pb-16 px-6">
         <div class=" flex justify-end">
             @if (Auth::guard('masyarakat')->user())
-            <a href={{route('routePN.create')}} class=" bg-keempat py-2 hover:bg-opacity-80 duration-300 ease-in-out flex items-center px-4 rounded-full text-xs text-putih gap-1 ">
+            <a href={{route('routePN.create')}} class=" bg-keempat py-[3px] hover:bg-opacity-80 duration-300 ease-in-out flex items-center px-4 rounded-full text-xs text-putih gap-1 ">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
                 </svg>
@@ -43,8 +43,10 @@
                                     <a class=" font-bold italic text-merah">Pending</a>
                                 @elseif($item->status == 'proses')
                                     <a class=" font-bold italic text-biru">Proses</a>
-                                @else
+                                @elseif($item->status == 'selesai')
                                     <a class=" font-bold italic text-keempat">Selesai</a>
+                                @else
+                                    <a class=" font-bold italic text-kuning">Belum Diverifikasi</a>
                                 @endif
                             </td>
                             <td class=" w-[17%] translate-x-24">{{$item->isi_laporan}}</td>
@@ -59,9 +61,19 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
                                     </svg>
                                     <div class=" hidden absolute group-hover/2:flex z-10 rounded-md group-hover/2:bg-putih group-hover/2:drop-shadow-5xl top-full left-0 ">
+                                        @if ($item->status != 'belum verif')
                                         <div class=" flex flex-col items-start gap-3 py-3 px-4 w-full">
                                             <a href="{{route('routePN.show', $item->id)}}" class=" text-biru text-sm font-bold w-full hover:underline">Detail</a>
                                         </div>
+                                        @else
+                                        <form action="{{route('verif', $item->id)}}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class=" bg-putih p-4">
+                                            <button class=" font-bold  text-kuning">Verifikasi</button>
+                                            </div>
+                                        </form>
+                                        @endif
                                     </div>
                                 </div>
                             </td>

@@ -57,6 +57,7 @@ Route::middleware('IsLogin')->group(function () {
     Route::post('/pengaduan/create', [PengaduanController::class, 'store'])->name('routePN.store');
     Route::get('/pengaduan/destroy/{id_pengaduan}', [PengaduanController::class, 'destroy'])->name('routePN.destroy');
     Route::get('/pengaduan/detail/{id_pengaduan}', [PengaduanController::class, 'show'])->name('routePN.show');
+    Route::put('/pengaduan/verif/{id}', [PengaduanController::class, 'verif'])->name('verif');
     // tanggapan
     Route::get('/tanggapan', [TanggapanController::class, 'index'])->name('routeT.index');
     Route::get('/tanggapan/{id_pengaduan}', [TanggapanController::class, 'destroy'])->name('routeT.destroy');

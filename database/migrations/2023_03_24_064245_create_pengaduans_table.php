@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
             $table->date('tgl_pengaduan');
             $table->char('nik',16);
-            // $table->foreign('nik')->references('nik')->on('masyarakats');
             $table->enum('kategori', ['sosial', 'lingkungan']);
             $table->text('isi_laporan');
-            $table->enum('status', ['0', 'proses', 'selesai']);
+            $table->enum('status', ['0', 'proses', 'selesai', 'belum verif'])->default('belum verif');
             $table->string('image');
             $table->timestamps();
         });

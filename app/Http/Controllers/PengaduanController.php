@@ -30,6 +30,7 @@ class PengaduanController extends Controller
             'nik' => Auth::guard('masyarakat')->user()->nik,
             'isi_laporan' => $request['isi_laporan'],
             'kategori' => $request['kategori'],
+            // 'validasi' => $request['validasi'],
             'image' => $profileImage,
         ]);
         if($create){
@@ -46,10 +47,22 @@ class PengaduanController extends Controller
     }
     public function show($id_pengaduan){
         $pengaduans = Pengaduan::with('getDataMasyarakat')->where('id', $id_pengaduan)->firstOrFail();
+        if($pengaduans->status == 'belum verif'){
+            return redirect()->back();
+        }
         $tanggapan = Tanggapan::where('id_pengaduan', $id_pengaduan)->first();
         if($tanggapan){
             return view('Pengaduan.show', compact('pengaduans', 'tanggapan'));
         }
         return view('Pengaduan.show', compact('pengaduans'));
+    }
+    public function verif($id){
+        $pengaduans = Pengaduan::where('id', $id)->firstOrFail();
+        $pengaduans->update([
+            'status' => '0',
+        ]);
+
+        Toastr::warning('Data Sudah Di Verifikasi', 'OK', ["positionClass" => "toast-top-right"]);
+        return redirect()->route('routePN.index');
     }
 }

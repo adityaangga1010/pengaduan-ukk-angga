@@ -16,6 +16,7 @@ class Pengaduan extends Model
         'isi_laporan',
         'image',
         'status',
+        'validasi',
     ];
 
     public function getDataMasyarakat(){

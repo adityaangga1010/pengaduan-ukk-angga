@@ -71,15 +71,11 @@
                     </div>
                     <div class=" flex justify-start flex-col items-start gap-2">
                         <label for="tanggapan" class=" text-sm">Tanggapan</label>
-                        <textarea type="text" placeholder="Isi Tanggapan" id="tanggapan" name="tanggapan" class=" rounded-md w-full p-3 text-sm border border-kelima">
-                            @if (isset($tanggapan))
-                                {{$tanggapan->tanggapan}}
-                            @endif
-                        </textarea>
+                        <textarea type="text" placeholder="Isi Tanggapan" id="tanggapan" name="tanggapan" class=" rounded-md w-full p-3 text-sm border border-kelima">@if (isset($tanggapan)){{$tanggapan->tanggapan}}@endif</textarea>
                     </div>
                     <button class=" bg-merah p-2 rounded-md text-putih">Simpan</button>
                 </form>
-            </div>  
+            </div>
         </div>
     </div>
 </div>

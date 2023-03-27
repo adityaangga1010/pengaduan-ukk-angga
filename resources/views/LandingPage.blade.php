@@ -90,7 +90,7 @@
                             <div class=" flex flex-col gap-4 px-9 w-full mb-4">
                                 <div class=" border rounded-lg border-kedua">
                                     <div class=" w-full h-full border-b-kedua">
-                                        <img class=" border-b border-kedua w-full h-36" src="{{asset('img/'.$item->image)}}" alt="">
+                                        <img class=" border-b border-kedua rounded-t-lg w-full h-36" src="{{asset('img/'.$item->image)}}" alt="">
                                         <div class=" flex flex-col gap-2 px-2 py-2">
                                             <div class=" flex justify-center">
                                                 <span class=" bg-merah px-3 py-1 rounded-full text-xs text-putih">Pending</span>
@@ -116,7 +116,7 @@
                             <div class=" flex flex-col gap-4 px-9 w-full mb-4">
                                 <div class=" border rounded-lg border-kedua">
                                     <div class=" w-full h-full border-b-kedua">
-                                        <img class=" border-b border-kedua w-full h-36" src="{{asset('img/'.$item->image)}}" alt="">
+                                        <img class=" border-b border-kedua rounded-t-lg w-full h-36" src="{{asset('img/'.$item->image)}}" alt="">
                                         <div class=" flex flex-col gap-2 px-2 py-2">
                                             <div class=" flex justify-center">
                                                 <span class=" bg-kuning px-3 py-1 rounded-full text-xs text-putih">Proses</span>
@@ -144,7 +144,7 @@
                             <div class=" flex flex-col gap-4 px-9 w-full mb-4">
                                 <div class=" border rounded-lg border-kedua">
                                     <div class=" w-full h-full border-b-kedua">
-                                        <img class=" border-b border-kedua w-full h-36" src="{{asset('img/'.$item->image)}}" alt="">
+                                        <img class=" border-b border-kedua rounded-t-lg w-full h-36" src="{{asset('img/'.$item->image)}}" alt="">
                                         <div class=" flex flex-col gap-2 px-2 py-2">
                                             <div class=" flex justify-center">
                                                 <span class=" bg-keempat px-3 py-1 rounded-full text-xs text-putih">Selesai</span>

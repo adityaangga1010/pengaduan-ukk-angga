@@ -36,9 +36,9 @@
                                 <input id="password" name="password" type="password" placeholder="Password"
                                     class=" text-utama text-sm w-full placeholder:text-sm placeholder:text-ketiga focus:placeholder:text-kedua focus:outline-none mt-2 border border-kedua rounded-md p-3" required>
                             </div>
-                            <button type="submit" class=" hover:bg-opacity-80 duration-300 ease-in-out bg-utama w-full text-putih py-3 mb-5 rounded-md">Login</button>
+                            <button type="submit" class=" hover:bg-opacity-80 duration-300 ease-in-out bg-utama w-full text-putih py-3 mb-5 rounded-md">Masuk</button>
                             <div class=" flex justify-center">
-                                <h1 class=" text-sm">Belum Memiliki Akun? <a href="{{route('route.register')}}" class=" text-utama hover:underline">Register</a></h1>
+                                <h1 class=" text-sm">Belum Memiliki Akun? <a href="{{route('route.register')}}" class=" text-utama hover:underline">Daftar</a></h1>
                             </div>
                         </form>
                     </div>
